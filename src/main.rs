@@ -55,8 +55,8 @@ fn build_tree_sitter_library(paths: &TreeSitterPaths) -> Result<bool> {
         .target(BUILD_TARGET);
 
     let mut command = compiler.try_get_compiler()?.to_command();
+    command.arg(&paths.parser);
     if cfg!(windows) {
-        command.arg(&paths.parser);
         if let Some(TreeSitterScannerSource { ref path, .. }) = paths.scanner {
             command.arg(path);
         }
