@@ -24,7 +24,7 @@ fn build_grammar() -> Result<bool> {
 }
 
 fn tree_sitter_library_path() -> Result<PathBuf> {
-    let mut library_path = std::env::current_dir()?.join("tree-sitter-lib");
+    let mut library_path = std::env::current_dir()?.join(std::env::current_dir()?.file_name());
     library_path.set_extension(std::env::consts::DLL_EXTENSION);
     Ok(library_path)
 }
